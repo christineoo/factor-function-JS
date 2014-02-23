@@ -55,7 +55,7 @@
 
      for (i = 0; i < arr.length; i++)
      {
-       console.log("[" + arr[i] + "]"); //print out the output 
+       console.log("[" + arr[i] + "]"); //print output for debugging 
        
      }
 
@@ -88,16 +88,18 @@
             printThis += "<br>"+x[i].join("x");
             
         }
-     return printThis; // <-- to be printed to the div
+     return printThis; 
     }
 
    document
    .getElementById('compute-button')
    .addEventListener('click', function buttonClicked(){
+   var max = 999;
+   var min = 0;
 
      // Handle button click
      // This (Math.floor(Math.random()* (max - min +1)) + min) is use to generate random numbers between 0 - 999
-     document.getElementById("results").innerHTML = Print(f(document.getElementById("n-equal-to").innerHTML=Math.floor(Math.random()* (999 - 0 +1)) + 0));
+     document.getElementById("results").innerHTML = Print(f(document.getElementById("n-equal-to").innerHTML=Math.floor(Math.random()* (max - min +1)) + min));
      
    }, false);
 
