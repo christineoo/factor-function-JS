@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Front End Exercise for Christine</title>
+</head>
+<body>
+
+ <form>
+   <p>
+     n=<span id="n-equal-to">?</span>
+     <button id="compute-button" type="button">Compute</button>
+   </p>
+   <h3>Results:</h3>
+   <ul id="results"></ul>
+ </form>
+
+ <script>
+
+   /*
+     Part 1.
+     Given a number n, generate all possible
+     sequences of numbers that multiply up to n,
+     where the numbers in the sequence are in
+     non-ascending order. e.g., n=18, then
+       18x1
+       9x2
+       6x3
+       3x3x2
+   */
+
+   /**
+    * f(n): Your algorithm for Part 1
+    *
+    * @param {Number} n
+    * @return Array
+    *
+    */
+
+   function f(n){
+     // Your algorithm implementation here
+     var arr = new Array();
+     
+     // When i > (Math.sqrt(number), it will return duplicated
+     // results. So, only need to loop until 
+     // i <= (Math.sqrt(number))
+     for (i = 1; i <= (Math.sqrt(n)); i++)
+     {
+       if ( n % i === 0)
+       { 
+         arr.push([(n/i), i]);
+   
+       }
+     }
+
+     for (i = 0; i < arr.length; i++)
+     {
+       console.log("[" + arr[i] + "]"); //print out the output 
+       
+     }
+
+     return arr;
+     
+   }
+
+ /*
+     Part 2.
+     Wire up the form above.
+     a.
+     When the "Compute" button is click, it
+     generate a random number between 0 - 999
+     b.
+     The random number is then pass to the
+     algorithm you did to get a result set
+     c.
+     The result set is then render to the
+     unordered list element with ID as 'results'
+     d.
+     The computed `n` should be display in the
+     paragraph element with ID as 'n-equal-to'.
+   */
+
+    function Print(x){
+    var printThis = "";
+
+        for(var i = 0; i < x.length; i++)
+        {
+            printThis += "<br>"+x[i].join("x");
+            
+        }
+     return printThis; // <-- to be printed to the div
+    }
+
+   document
+   .getElementById('compute-button')
+   .addEventListener('click', function buttonClicked(){
+
+     // Handle button click
+     // This (Math.floor(Math.random()* (max - min +1)) + min) is use to generate random numbers between 0 - 999
+     document.getElementById("results").innerHTML = Print(f(document.getElementById("n-equal-to").innerHTML=Math.floor(Math.random()* (999 - 0 +1)) + 0));
+     
+   }, false);
+
+   
+
+ </script>
+</body>
+</html>
